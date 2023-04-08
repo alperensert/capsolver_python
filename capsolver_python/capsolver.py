@@ -59,7 +59,7 @@ class CapSolver:
         if method == RequestType.CreateTask or method == RequestType.CreateTaskAntiAkamai or method == RequestType.CreateTaskKasada:
             data["appId"] = "0C39FC4D-C1FB-4F4E-975B-89E93B78A97A"
         try:
-            response = requests.post("{}{}".format(self._BETA_HOST_URL if self.beta else self._HOST_URL, method), json=data).json()
+            response = requests.post("{}{}".format(self._BETA_HOST_URL if self.beta else self._HOST_URL, method.value), json=data).json()
         except Exception as err:
             raise CapSolverException(-1, type(err).__name__, str(err))
         return response
